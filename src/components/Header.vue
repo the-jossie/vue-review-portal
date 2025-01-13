@@ -13,10 +13,11 @@
 </template>
 
 <script>
-import StyledText from "@/components/StyledText";
+import StyledText from "@/components/Text";
 import config from "@/configs/app";
 
 export default {
+  name: "HeaderNav",
   components: {
     StyledText,
   },

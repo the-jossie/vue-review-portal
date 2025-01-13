@@ -1,16 +1,10 @@
 <template>
-  <div class="">
-    <HelloWorld msg="Welcome to Your Vue.js App" />
-  </div>
+  <div class=""></div>
 </template>
 
 <script>
-import HelloWorld from "@/components/HelloWorld.vue";
-
 export default {
   name: "HomeView",
-  components: {
-    HelloWorld,
-  },
+  components: {},
 };
 </script>
