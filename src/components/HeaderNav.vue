@@ -1,21 +1,25 @@
 <template>
   <nav>
-    <h1>{{ appName }}</h1>
+    <StyledText :value="appName" variant="h3" />
     <ul>
       <li>
-        <router-link to="/">Home</router-link>
+        <router-link to="/"><StyledText value="Home" /></router-link>
       </li>
       <li>
-        <router-link to="/about">About</router-link>
+        <router-link to="/about"><StyledText value="About" /></router-link>
       </li>
     </ul>
   </nav>
 </template>
 
 <script>
+import StyledText from "@/components/StyledText";
 import config from "@/configs/app";
 
 export default {
+  components: {
+    StyledText,
+  },
   data() {
     return {
       appName: config.APP_NAME,
@@ -30,7 +34,7 @@ nav {
   align-items: center;
   justify-content: space-between;
   background-color: #e9e9e9;
-  padding: 4px 40px;
+  padding: 16px 40px;
 
   ul {
     list-style-type: none;
@@ -40,7 +44,6 @@ nav {
 
     li {
       margin: 0 10px;
-
       a {
         text-decoration: none;
       }
