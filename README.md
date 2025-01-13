@@ -1,5 +1,8 @@
 # vue-review-portal
 
+## NODE Version
+- 16
+
 ## Project setup
 ```
 yarn install
