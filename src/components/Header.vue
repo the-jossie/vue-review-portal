@@ -1,7 +1,11 @@
 <template>
   <div class="container">
     <nav>
-      <CustomText :value="appName" variant="h3" />
+      <li>
+        <router-link to="/">
+          <CustomText :value="appName" variant="h3" />
+        </router-link>
+      </li>
       <ul>
         <li>
           <router-link to="/"><CustomText value="Home" /></router-link>
