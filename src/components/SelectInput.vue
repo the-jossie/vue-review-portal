@@ -84,7 +84,7 @@ export default {
 }
 
 .input-style:focus {
-  outline: 2px solid #007bff;
+  outline: 1px solid #000;
 }
 
 .input-style:hover {
@@ -92,7 +92,7 @@ export default {
 }
 
 .input-style.error {
-  outline: 2px solid #ff4d4d;
+  outline: 1px solid #ff4d4d;
   background-color: #ffe5e5;
 }
 </style>

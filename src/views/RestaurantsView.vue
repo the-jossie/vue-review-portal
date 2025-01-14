@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div class="filter-wrapper">
+    <form>
       <SearchInput
         :text="searchText"
         @update:text="updateSearchText"
@@ -9,7 +9,6 @@
         class="search-input"
       />
       <SelectInput
-        label="Cuisine"
         :options="['Option 1', 'Option 2', 'Option 3']"
         placeholder="Cuisines"
         v-model="selectedOption"
@@ -17,14 +16,13 @@
       />
 
       <SelectInput
-        label="City"
         :options="['Option 1', 'Option 2', 'Option 3']"
-        placeholder="Cuisines"
+        placeholder="City"
         v-model="selectedOption"
         :error="formErrors.option"
       />
-      <CustomButton text="Search" shape="round" />
-    </div>
+      <CustomButton text="Search" customClass="search-button" />
+    </form>
   </div>
 </template>
 <script>
@@ -64,15 +62,22 @@ export default {
   margin: 0 auto;
   padding: 50px 0;
 
-  .filter-wrapper {
+  form {
     display: flex;
     align-items: center;
     margin-bottom: 50px;
     width: 100%;
 
+    > * {
+      margin-right: 20px;
+    }
+
     .search-input {
       flex: 1;
-      margin-right: 20px;
+    }
+
+    .search-button {
+      width: 150px;
     }
   }
 }

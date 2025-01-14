@@ -52,7 +52,7 @@ export default {
       default: "square",
       validator: (value) => ["round", "square"].includes(value),
     },
-    className: {
+    customClass: {
       type: String,
       default: "",
     },
@@ -72,7 +72,7 @@ export default {
         `button-variant-${this.variant}`,
         `button-size-${this.size}`,
         this.shapeClass,
-        this.className,
+        this.customClass,
       ];
     },
     shapeClass() {

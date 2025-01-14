@@ -74,17 +74,17 @@ export default {
 
 <style scoped>
 .input-background {
-  background-color: #e0e0e0;
+  background-color: #fff;
   display: flex;
   align-items: center;
   border-radius: 9999px;
   padding: 0 16px;
-  border: 1px solid transparent;
+  border: 1px solid #ccc;
   transition: border-color 0.3s ease;
 }
 
 .input-background:focus-within {
-  border-color: #007bff;
+  border-color: black;
 }
 
 .input-style {
