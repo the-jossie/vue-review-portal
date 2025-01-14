@@ -1,18 +1,22 @@
-import StyledText from '@/components/Text';
+import CustomText from '@/components/Text';
 <template>
   <div class="container">
-    <StyledText :value="appName" variant="h1" class="title" />
+    <CustomText :value="appName" variant="h1" class="title" />
+    <CustomButton text="Explore Restaurants" />
+    <CustomText :value="appName" variant="h1" class="title" />
   </div>
 </template>
 
 <script>
-import StyledText from "@/components/Text";
+import CustomText from "@/components/Text";
+import CustomButton from "@/components/Button";
 import configs from "@/configs/app";
 
 export default {
   name: "HomeView",
   components: {
-    StyledText,
+    CustomButton,
+    CustomText,
   },
   data() {
     return {

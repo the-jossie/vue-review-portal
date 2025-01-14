@@ -1,13 +1,13 @@
 <template>
   <div class="container">
     <nav>
-      <StyledText :value="appName" variant="h3" />
+      <CustomText :value="appName" variant="h3" />
       <ul>
         <li>
-          <router-link to="/"><StyledText value="Home" /></router-link>
+          <router-link to="/"><CustomText value="Home" /></router-link>
         </li>
         <li>
-          <router-link to="/about"><StyledText value="About" /></router-link>
+          <router-link to="/about"><CustomText value="About" /></router-link>
         </li>
       </ul>
     </nav>
@@ -15,13 +15,13 @@
 </template>
 
 <script>
-import StyledText from "@/components/Text";
+import CustomText from "@/components/Text";
 import config from "@/configs/app";
 
 export default {
   name: "HeaderNav",
   components: {
-    StyledText,
+    CustomText,
   },
   data() {
     return {

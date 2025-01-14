@@ -1,12 +1,11 @@
 <template>
-  <component :is="computedTag" :class="computedClass" v-bind="labelProps">
-    <template v-if="value">{{ value }}</template>
-    <slot v-else />
+  <component :is="computedTag" :for="htmlFor" :class="computedClass">
+    {{ value || $slots.default }}
   </component>
 </template>
 <script>
 export default {
-  name: "StyledText",
+  name: "CustomText",
   props: {
     value: {
       type: String,
@@ -38,45 +37,98 @@ export default {
     },
   },
   computed: {
-    textVariantStyle() {
-      return {
-        h1: "font-weight: 800; font-size: 2.25rem; line-height: 3.75rem;",
-        h2: "font-weight: 700; font-size: 1.5rem; line-height: 2rem;",
-        h3: "font-weight: 700; font-size: 1.25rem; line-height: 1.75rem;",
-        h4: "font-weight: 700; font-size: 1rem; line-height: 1.5rem;",
-        h5: "font-weight: 700; font-size: 0.875rem; line-height: 1.25rem;",
-        p: "font-size: 0.875rem; line-height: 1.25rem;",
-        p2: "font-size: 0.75rem; line-height: 1rem;",
-        p3: "font-size: 0.625rem; line-height: 0.875rem;",
-      };
-    },
-    fontWeightStyle() {
-      return {
-        300: "font-weight: 300;",
-        400: "font-weight: 400;",
-        500: "font-weight: 500;",
-        600: "font-weight: 600;",
-        700: "font-weight: 700;",
-        800: "font-weight: 800;",
-        900: "font-weight: 900;",
-      };
+    computedTag() {
+      return this.tag || (this.variant.startsWith("p") ? "p" : this.variant);
     },
     computedClass() {
-      return `
-        ${this.textVariantStyle[this.variant] || ""}
-        ${this.weight ? this.fontWeightStyle[this.weight] : ""}
-        ${this.customClass}
-      `;
-    },
-    computedTag() {
-      const firstLetterOfVariant = this.variant[0];
-      const shouldRenderParagraphTag = firstLetterOfVariant === "p";
-      return this.tag || (shouldRenderParagraphTag ? "p" : this.variant);
-    },
-    labelProps() {
-      return this.htmlFor ? { htmlFor: this.htmlFor } : {};
+      return [
+        "text-base",
+        `text-variant-${this.variant}`,
+        `text-weight-${this.weight}`,
+        this.className,
+      ]
+        .join(" ")
+        .trim();
     },
   },
 };
 </script>
-<style scoped></style>
+
+<style scoped>
+/* Base text styles */
+.text-base {
+  line-height: 1.5;
+}
+
+/* Variants */
+.text-variant-h1 {
+  font-weight: 800;
+  font-size: 2.25rem;
+  line-height: 3rem;
+}
+
+.text-variant-h2 {
+  font-weight: 700;
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+}
+
+.text-variant-h3 {
+  font-weight: 700;
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+.text-variant-h4 {
+  font-weight: 700;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
+.text-variant-h5 {
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+.text-variant-p {
+  font-size: 1rem;
+}
+
+.text-variant-p2 {
+  font-size: 0.875rem;
+}
+
+.text-variant-p3 {
+  font-size: 0.75rem;
+}
+
+/* Weights */
+.text-weight-300 {
+  font-weight: 300;
+}
+
+.text-weight-400 {
+  font-weight: 400;
+}
+
+.text-weight-500 {
+  font-weight: 500;
+}
+
+.text-weight-600 {
+  font-weight: 600;
+}
+
+.text-weight-700 {
+  font-weight: 700;
+}
+
+.text-weight-800 {
+  font-weight: 800;
+}
+
+.text-weight-900 {
+  font-weight: 900;
+}
+</style>
