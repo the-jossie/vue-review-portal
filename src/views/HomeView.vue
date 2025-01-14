@@ -5,7 +5,7 @@
         <img :src="require(`@/assets/${image}`)" :alt="`image ${index + 1}`" />
       </li>
     </ul>
-    <CustomButton text="Explore Restaurants" />
+    <CustomButton text="Explore Restaurants" href="/restaurants" />
   </div>
 </template>
 

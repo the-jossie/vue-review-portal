@@ -7,7 +7,9 @@
           <router-link to="/"><CustomText value="Home" /></router-link>
         </li>
         <li>
-          <router-link to="/about"><CustomText value="About" /></router-link>
+          <router-link to="/restaurants"
+            ><CustomText value="Restaurants"
+          /></router-link>
         </li>
       </ul>
     </nav>
