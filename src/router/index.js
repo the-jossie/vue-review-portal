@@ -13,7 +13,12 @@ const routes = [
   {
     path: "/restaurants",
     name: "restaurants",
-    component: () => import("../views/RestaurantsView.vue"),
+    component: () => import("@/views/RestaurantsView.vue"),
+  },
+  {
+    path: "/restaurant/:id",
+    name: "restaurant-details",
+    component: () => import("@/views/RestaurantDetailsView.vue"),
   },
 ];
 

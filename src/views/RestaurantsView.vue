@@ -23,12 +23,25 @@
       />
       <CustomButton text="Search" customClass="search-button" />
     </form>
+
+    <div class="restaurants-list">
+      <RestaurantCard
+        name="KFC"
+        address="10 KFC Road, Liverpool Road"
+        email="hello@kfc.com"
+        phone="01234567890"
+        city="Stoke"
+        ratings="4.5"
+        @click="goToRestaurantDetailsView(1)"
+      />
+    </div>
   </div>
 </template>
 <script>
 import CustomButton from "@/components/Button";
 import SearchInput from "@/components/SearchInput";
 import SelectInput from "@/components/SelectInput";
+import RestaurantCard from "@/shared/RestaurantCard";
 
 export default {
   name: "RestaurantsView",
@@ -36,6 +49,7 @@ export default {
     CustomButton,
     SearchInput,
     SelectInput,
+    RestaurantCard,
   },
   data() {
     return {
@@ -47,6 +61,9 @@ export default {
     };
   },
   methods: {
+    goToRestaurantDetailsView(id) {
+      this.$router.push({ name: "restaurant-details", params: { id } });
+    },
     updateSearchText(newText) {
       this.searchText = newText;
     },
@@ -79,6 +96,12 @@ export default {
     .search-button {
       width: 150px;
     }
+  }
+
+  .restaurants-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    gap: 20px;
   }
 }
 </style>
