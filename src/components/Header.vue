@@ -7,12 +7,9 @@
         </router-link>
       </li>
       <ul>
-        <li>
-          <router-link to="/"><CustomText value="Home" /></router-link>
-        </li>
-        <li>
-          <router-link to="/restaurants"
-            ><CustomText value="Restaurants"
+        <li v-for="(route, index) in routes" :key="index">
+          <router-link :to="route.path" exact active-class="active-route"
+            ><CustomText :value="route.name"
           /></router-link>
         </li>
       </ul>
@@ -23,6 +20,7 @@
 <script>
 import CustomText from "@/components/Text";
 import config from "@/configs/app";
+import pageRoutes from "@/configs/page-routes";
 
 export default {
   name: "HeaderNav",
@@ -32,6 +30,7 @@ export default {
   data() {
     return {
       appName: config.APP_NAME,
+      routes: pageRoutes.data,
     };
   },
 };
@@ -62,6 +61,10 @@ export default {
           color: #fff;
           font-weight: 600;
         }
+      }
+
+      .active-route {
+        color: #fe724c !important;
       }
     }
   }
