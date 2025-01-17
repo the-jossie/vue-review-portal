@@ -13,14 +13,17 @@
         <div class="contact">
           <p>{{ email }}, {{ phone }}</p>
 
-          <p>{{ ratings }}</p>
+          <StarRating :count="ratings" />
         </div>
       </div>
     </div>
   </button>
 </template>
 <script>
+import StarRating from "@/components/StarRating.vue";
+
 export default {
+  components: { StarRating },
   props: {
     name: {
       type: String,
