@@ -20,6 +20,11 @@ const routes = [
     name: "restaurant-details",
     component: () => import("@/views/RestaurantDetailsView.vue"),
   },
+  {
+    path: "*",
+    name: "not-found",
+    component: () => import("@/views/NotFoundView.vue"),
+  },
 ];
 
 const router = new VueRouter({

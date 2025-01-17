@@ -1,6 +1,6 @@
 <template>
   <component :is="computedTag" :for="htmlFor" :class="computedClass">
-    {{ value || $slots.default }}
+    {{ value }}
   </component>
 </template>
 <script>
