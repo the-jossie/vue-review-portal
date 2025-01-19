@@ -16,11 +16,11 @@ export default {};
   padding: 60px 0;
   max-width: 1440px;
   margin: 0 auto;
+  height: 80vh;
 
   img {
     width: 50%;
     object-fit: cover;
-    height: 80vh;
     border-radius: 32px;
   }
 }

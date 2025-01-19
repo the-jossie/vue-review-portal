@@ -25,6 +25,11 @@ const routes = [
     name: "not-found",
     component: () => import("@/views/NotFoundView.vue"),
   },
+  {
+    path: "/signup",
+    name: "signup",
+    component: () => import("@/views/SignupView.vue"),
+  },
 ];
 
 const router = new VueRouter({
