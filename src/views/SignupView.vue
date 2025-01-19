@@ -2,7 +2,7 @@
   <AuthLayout>
     <div class="signup-view">
       <CustomText value="Sign Up" variant="h2" />
-      <form>
+      <form @submit.prevent="handleSubmit">
         <CustomInput
           label="Email"
           name="email"
@@ -29,7 +29,7 @@
           label="Password"
           name="password"
           type="password"
-          placeholder="Enter your password"
+          placeholder="Create your password"
           :value="password"
           @input="password = $event"
           customClass="input"
@@ -39,9 +39,9 @@
 
         <span class="altText">
           <CustomText value="Already have an account?" variant="p2" />
-          <a href="/login">
+          <router-link to="/login">
             <CustomText value="Login here" variant="p2" />
-          </a>
+          </router-link>
         </span>
       </form>
     </div>

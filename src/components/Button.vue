@@ -1,5 +1,5 @@
 <template>
-  <component v-if="href" :is="'a'" :href="href" :class="buttonClasses">
+  <component v-if="to" :is="'router-link'" :to="to" :class="buttonClasses">
     <CustomText :value="text" />
   </component>
   <button
@@ -31,7 +31,7 @@ export default {
       type: String,
       required: true,
     },
-    href: {
+    to: {
       type: String,
       default: null,
     },
