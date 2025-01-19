@@ -81,10 +81,10 @@ export default {
         : "button-shape-square";
     },
     isButtonDisabled() {
-      return this.disabled || !this.isLoading;
+      return this.disabled || this.isLoading;
     },
     buttonText() {
-      return !this.isLoading ? "..." : this.text;
+      return this.isLoading ? "..." : this.text;
     },
   },
 };
