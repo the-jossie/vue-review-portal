@@ -1,0 +1,102 @@
+<template>
+  <AuthLayout>
+    <div class="login-view">
+      <CustomText value="Login" variant="h2" />
+      <form @submit.prevent="handleSubmit">
+        <CustomInput
+          label="Username"
+          name="username"
+          type="text"
+          placeholder="Enter your username"
+          :value="username"
+          :error="error"
+          @input="username = $event"
+          customClass="input"
+        />
+
+        <CustomInput
+          label="Password"
+          name="password"
+          type="password"
+          placeholder="Enter your password"
+          :value="password"
+          @input="password = $event"
+          customClass="input"
+        />
+
+        <CustomButton text="Login" size="large" customClass="button" />
+
+        <span class="altText">
+          <CustomText value="Don't have an account?" variant="p2" />
+          <router-link to="/signup">
+            <CustomText value="Signup here" variant="p2" />
+          </router-link>
+        </span>
+      </form>
+    </div>
+  </AuthLayout>
+</template>
+<script>
+import AuthLayout from "@/components/AuthLayout.vue";
+import CustomButton from "@/components/Button";
+import CustomText from "@/components/Text";
+import CustomInput from "@/components/Input";
+
+export default {
+  components: {
+    AuthLayout,
+    CustomButton,
+    CustomInput,
+    CustomText,
+  },
+  data() {
+    return {
+      username: "",
+      password: "",
+    };
+  },
+};
+</script>
+<style scoped>
+.login-view {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 80px;
+  height: 100%;
+  width: 100%;
+  padding-left: 80px;
+
+  form {
+    margin-top: 4rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+
+    .input {
+      margin-bottom: 2rem;
+      width: 100%;
+    }
+
+    .button {
+      margin: 2rem 0;
+    }
+
+    .altText {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      a {
+        text-decoration: underline;
+        color: #fe724c;
+        font-weight: 600;
+        margin-left: 0.5rem;
+      }
+    }
+  }
+}
+</style>
