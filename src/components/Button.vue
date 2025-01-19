@@ -4,7 +4,7 @@
   </component>
   <button
     v-else
-    :class="buttonClasses"
+    :class="[buttonClasses, { 'button-disabled': isButtonDisabled }]"
     :disabled="isButtonDisabled"
     v-bind="otherProps"
   >
@@ -81,10 +81,10 @@ export default {
         : "button-shape-square";
     },
     isButtonDisabled() {
-      return this.disabled || this.isLoading;
+      return this.disabled || !this.isLoading;
     },
     buttonText() {
-      return this.isLoading ? "..." : this.text;
+      return !this.isLoading ? "..." : this.text;
     },
   },
 };
@@ -110,7 +110,7 @@ export default {
   border: 1px solid black;
 }
 
-.button-variant-primary:hover {
+.button-variant-primary:not(.button-disabled):hover {
   background-color: white;
   color: black;
   border: 1px solid black;
@@ -156,5 +156,10 @@ export default {
 
 .button-shape-square {
   border-radius: 0.25rem;
+}
+
+.button-disabled,
+.button-disabled:hover {
+  cursor: not-allowed;
 }
 </style>

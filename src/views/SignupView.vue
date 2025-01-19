@@ -61,6 +61,7 @@
             text="Signup"
             type="submit"
             size="large"
+            :isLoading="isSubmitting"
             customClass="button"
           />
 
@@ -76,11 +77,12 @@
   </AuthLayout>
 </template>
 <script>
+import Vue from "vue";
 import AuthLayout from "@/components/AuthLayout.vue";
 import CustomButton from "@/components/Button";
 import CustomText from "@/components/Text";
 import CustomInput from "@/components/Input";
-import Vue from "vue";
+import { signupApi } from "@/api";
 
 export default {
   components: {
@@ -96,15 +98,25 @@ export default {
         username: "",
         password: "",
       },
+      isSubmitting: false,
     };
   },
   methods: {
     onSubmit() {
-      console.log(this.formData);
+      this.isSubmitting = true;
 
-      Vue.$toast.success("Success", {
-        timeout: 2000,
-      });
+      signupApi(this.formData)
+        .then(() => {
+          Vue.$toast.success("Signup successful!", {
+            timeout: 2000,
+          });
+        })
+        .catch(() => {
+          Vue.$toast.error("An error occured. Please try again!", {
+            timeout: 2000,
+          });
+        })
+        .finally(() => (this.isSubmitting = false));
     },
   },
 };
