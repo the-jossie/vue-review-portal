@@ -110,6 +110,8 @@ export default {
           Vue.$toast.success("Signup successful!", {
             timeout: 2000,
           });
+
+          this.$router.push({ name: "login" });
         })
         .catch(() => {
           Vue.$toast.error("An error occured. Please try again!", {
