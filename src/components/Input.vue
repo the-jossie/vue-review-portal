@@ -24,7 +24,7 @@
         class="ml-2 cursor-pointer"
       />
     </div>
-    <ErrorMessage v-if="error" :error="error" />
+    <ErrorMessage v-if="error" :value="error" />
   </div>
 </template>
 
@@ -47,7 +47,7 @@ export default {
       default: "",
     },
     error: {
-      type: Object,
+      type: String,
       default: null,
     },
     name: {

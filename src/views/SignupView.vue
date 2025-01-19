@@ -2,48 +2,76 @@
   <AuthLayout>
     <div class="signup-view">
       <CustomText value="Sign Up" variant="h2" />
-      <form @submit.prevent="handleSubmit">
-        <CustomInput
-          label="Email"
-          name="email"
-          type="text"
-          placeholder="Enter your email"
-          :value="email"
-          :error="error"
-          @input="email = $event"
-          customClass="input"
-        />
+      <ValidationObserver v-slot="{ handleSubmit }" class="validation-observer">
+        <form @submit.prevent="handleSubmit(onSubmit)">
+          <ValidationProvider
+            name="email"
+            rules="required|email"
+            v-slot="{ errors }"
+            class="validation-provider"
+          >
+            <CustomInput
+              label="Email"
+              name="email"
+              type="email"
+              placeholder="Enter your email"
+              :value="formData.email"
+              :error="errors[0]"
+              @input="formData.email = $event"
+              customClass="input"
+            />
+          </ValidationProvider>
+          <ValidationProvider
+            name="username"
+            rules="required|alpha|min:3"
+            v-slot="{ errors }"
+            class="validation-provider"
+          >
+            <CustomInput
+              label="Username"
+              name="username"
+              type="text"
+              placeholder="Create your username"
+              :value="formData.username"
+              :error="errors[0]"
+              @input="formData.username = $event"
+              customClass="input"
+            />
+          </ValidationProvider>
 
-        <CustomInput
-          label="Username"
-          name="username"
-          type="text"
-          placeholder="Create your username"
-          :value="username"
-          :error="error"
-          @input="username = $event"
-          customClass="input"
-        />
+          <ValidationProvider
+            name="password"
+            rules="required|max:12|min:6"
+            v-slot="{ errors }"
+            class="validation-provider"
+          >
+            <CustomInput
+              label="Password"
+              name="password"
+              type="password"
+              placeholder="Create your password"
+              :value="formData.password"
+              @input="formData.password = $event"
+              customClass="input"
+              :error="errors[0]"
+            />
+          </ValidationProvider>
 
-        <CustomInput
-          label="Password"
-          name="password"
-          type="password"
-          placeholder="Create your password"
-          :value="password"
-          @input="password = $event"
-          customClass="input"
-        />
+          <CustomButton
+            text="Signup"
+            type="submit"
+            size="large"
+            customClass="button"
+          />
 
-        <CustomButton text="Signup" size="large" customClass="button" />
-
-        <span class="altText">
-          <CustomText value="Already have an account?" variant="p2" />
-          <router-link to="/login">
-            <CustomText value="Login here" variant="p2" />
-          </router-link>
-        </span>
-      </form>
+          <span class="altText">
+            <CustomText value="Already have an account?" variant="p2" />
+            <router-link to="/login">
+              <CustomText value="Login here" variant="p2" />
+            </router-link>
+          </span>
+        </form>
+      </ValidationObserver>
     </div>
   </AuthLayout>
 </template>
@@ -62,10 +90,17 @@ export default {
   },
   data() {
     return {
-      email: "",
-      username: "",
-      password: "",
+      formData: {
+        email: "",
+        username: "",
+        password: "",
+      },
     };
+  },
+  methods: {
+    onSubmit() {
+      console.log(this.formData);
+    },
   },
 };
 </script>
@@ -79,34 +114,42 @@ export default {
   width: 100%;
   padding-left: 80px;
 
-  form {
-    margin-top: 4rem;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  .validation-observer {
     width: 100%;
 
-    .input {
-      margin-bottom: 2rem;
+    form {
+      margin-top: 4rem;
       width: 100%;
-    }
-
-    .button {
-      margin: 2rem 0;
-    }
-
-    .altText {
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
+      width: 100%;
 
-      a {
-        text-decoration: underline;
-        color: #fe724c;
-        font-weight: 600;
-        margin-left: 0.5rem;
+      .validation-provider {
+        width: 100%;
+
+        .input {
+          margin-bottom: 2rem;
+          width: 100%;
+        }
+      }
+
+      .button {
+        margin: 2rem 0;
+      }
+
+      .altText {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        a {
+          text-decoration: underline;
+          color: #fe724c;
+          font-weight: 600;
+          margin-left: 0.5rem;
+        }
       }
     }
   }

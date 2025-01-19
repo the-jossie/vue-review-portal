@@ -1,10 +1,6 @@
 <template>
-  <div role="alert" class="flex items-center mt-1">
-    <CustomText
-      :value="error.message"
-      variant="p3"
-      class="text-left ml-1 text-red-200"
-    />
+  <div role="alert" class="error-message">
+    <CustomText :value="value" variant="p3" />
   </div>
 </template>
 
@@ -13,8 +9,8 @@ import CustomText from "@/components/Text";
 
 export default {
   props: {
-    error: {
-      type: Object,
+    value: {
+      type: String,
       required: true,
     },
   },
@@ -24,4 +20,16 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.error-message {
+  display: flex;
+  align-items: center;
+  margin-top: 4px;
+
+  p {
+    color: red;
+    text-align: left;
+    margin-left: 4px;
+  }
+}
+</style>
