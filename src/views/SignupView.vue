@@ -80,6 +80,7 @@ import AuthLayout from "@/components/AuthLayout.vue";
 import CustomButton from "@/components/Button";
 import CustomText from "@/components/Text";
 import CustomInput from "@/components/Input";
+import Vue from "vue";
 
 export default {
   components: {
@@ -100,6 +101,10 @@ export default {
   methods: {
     onSubmit() {
       console.log(this.formData);
+
+      Vue.$toast.success("Success", {
+        timeout: 2000,
+      });
     },
   },
 };
