@@ -145,9 +145,8 @@ export default {
 }
 
 .button-size-large {
-  padding: 1rem 2rem;
+  padding: 0.8rem 4rem;
   font-size: 1.25rem;
-  width: 100%;
 }
 
 /* Shapes */
