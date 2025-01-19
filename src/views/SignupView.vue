@@ -15,13 +15,13 @@
         />
 
         <CustomInput
-          label="Email"
-          name="email"
+          label="Username"
+          name="username"
           type="text"
-          placeholder="Enter your email"
-          :value="email"
+          placeholder="Create your username"
+          :value="username"
           :error="error"
-          @input="email = $event"
+          @input="username = $event"
           customClass="input"
         />
 
@@ -60,6 +60,13 @@ export default {
     CustomInput,
     CustomText,
   },
+  data() {
+    return {
+      email: "",
+      username: "",
+      password: "",
+    };
+  },
 };
 </script>
 <style scoped>
@@ -67,7 +74,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 20px;
+  margin-top: 80px;
   height: 100%;
   width: 100%;
   padding-left: 80px;
@@ -94,7 +101,6 @@ export default {
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-top: 2rem;
 
       a {
         text-decoration: underline;
