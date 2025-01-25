@@ -22,19 +22,19 @@
             />
           </ValidationProvider>
           <ValidationProvider
-            name="username"
+            name="userName"
             rules="required|alpha|min:3"
             v-slot="{ errors }"
             class="validation-provider"
           >
             <CustomInput
               label="Username"
-              name="username"
+              name="userName"
               type="text"
               placeholder="Create your username"
-              :value="formData.username"
+              :value="formData.userName"
               :error="errors[0]"
-              @input="formData.username = $event"
+              @input="formData.userName = $event"
               customClass="input"
             />
           </ValidationProvider>
@@ -95,7 +95,7 @@ export default {
     return {
       formData: {
         email: "",
-        username: "",
+        userName: "",
         password: "",
       },
       isSubmitting: false,
