@@ -2,7 +2,7 @@ import axios from "axios";
 import Vue from "vue";
 import { APP_NAME, STORAGE_KEYS } from "./app";
 
-const APIURL = "https://restaurant-review-portal-16deacfd1740.herokuapp.com";
+const APIURL = "http://localhost:5000";
 
 const getToken = () => {
   if (typeof window !== "undefined") {
