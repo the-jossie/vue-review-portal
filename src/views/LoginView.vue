@@ -5,19 +5,19 @@
       <ValidationObserver v-slot="{ handleSubmit }" class="validation-observer">
         <form @submit.prevent="handleSubmit(onSubmit)">
           <ValidationProvider
-            name="username"
-            rules="required|alpha|min:3"
+            name="email"
+            rules="required|email"
             v-slot="{ errors }"
             class="validation-provider"
           >
             <CustomInput
-              label="Username"
-              name="username"
-              type="text"
-              placeholder="Enter your username"
-              :value="formData.username"
+              label="Email"
+              name="email"
+              type="email"
+              placeholder="Enter your email"
+              :value="formData.email"
               :error="errors[0]"
-              @input="formData.username = $event"
+              @input="formData.email = $event"
               customClass="input"
             />
           </ValidationProvider>
@@ -74,7 +74,7 @@ export default {
   data() {
     return {
       formData: {
-        username: "",
+        email: "",
         password: "",
       },
     };
